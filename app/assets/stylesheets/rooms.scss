@@ -1,0 +1,177 @@
+// Place all the styles related to the rooms controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+// serachアクション
+
+.room-container{
+    border: 1px solid #e2e2e2;
+    margin-bottom: 10px;
+}
+
+.room-image-out{
+    position: relative;
+    width: 100%;
+    background: #F6F8F9;
+    height: 200px;
+}
+
+.room-image{
+    width: 100%;
+    height: 180px;
+    position: absolute;
+    top: 20px;
+    object-fit: cover;
+}
+
+.room-information{
+    width: 100%;
+    padding: 15px;
+}
+
+.room-information div {
+    word-break: break-all;
+    margin-bottom: 12px;
+}
+
+.room-profile-name{
+    font-size: 18px;
+    font-weight: bold;
+    color: #909090;
+}
+
+.room-profile-address{
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+}
+
+.room-profile-price{
+    text-align: right;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: black;
+}
+
+// showアクション
+
+.room-show{
+    padding: 30px 0;
+}
+
+.room-show-image{
+    width: 100%;
+    object-fit: cover;
+}
+
+.room-show-detail{
+    display: flex;
+    align-items: center;
+}
+
+.room-show-detail-icon{
+    padding: 10px;
+}
+
+.room-show-profile{
+    padding: 15px;
+}
+
+.room-show-profile-name{
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px 0;
+}
+
+.room-show-profile-address{
+    font-size: 14px;
+}
+
+.room-show-introduction{
+    font-size: 16px;
+    line-height: 30px;
+    padding: 30px 10px;
+    border-top: 1px solid #eaedef;
+    border-bottom: 1px solid #eaedef;
+    word-break: break-all;
+}
+
+.room-show-nav{
+    padding: 20px;
+    border: 1px solid #eaedef;
+}
+
+.room-show-reservation-form{
+    padding: 15px 0;
+}
+
+.form-label{
+    letter-spacing: 2px;
+    font-size: 14px;
+}
+
+// newアクション
+// nav
+
+.room-new-container{
+    width: 100%
+}
+
+.room-nav{
+    margin: 30px 15px;
+}
+
+.room-nav-pc{
+    // height: 100vh;
+    border-right: 2px solid #e2e2e2;
+    // padding: 30px 15px;
+}
+
+.room-nav-mb{
+    height: auto;
+    border-bottom: 2px solid #e2e2e2;
+}
+
+.room-nav-pc .active{
+    border-right: 3px solid #4a90e2;
+}
+
+.room-nav-mb .active{
+    border-bottom: 3px solid #4a90e2;
+}
+
+.nav-item{
+    font-size: 18px;
+    padding: 10px;
+}
+
+// newアクション
+// form
+
+.room-view{
+    background-color: #F6F8F9;
+}
+
+.room-form-box{
+    max-width: 880px;
+    background-color: #fff;
+    border: 1px solid #eaedef;
+    margin: 50px auto;
+}
+
+.room-new-content{
+    border-bottom: 1px solid #eaedef;
+    padding: 20px;
+    margin-top: 1rem;
+    margin-bottom: .5rem;
+    letter-spacing: .3rem;
+}
+
+.room-new-form-label{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+

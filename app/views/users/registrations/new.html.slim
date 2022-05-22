@@ -1,0 +1,27 @@
+= render "/shared/error", resource: resource
+
+.container.device-container
+  .device-form-container
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      .my-4 新規ユーザー登録
+      .device-form-contents.container
+        .row.my-4
+          .col-2.required-item
+          .col-10
+            =f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "名前", class: 'form-control'
+        .row.my-4
+          .col-2.required-item
+          .col-10
+             = f.email_field :email, autocomplete: "email", placeholder: "メールアドレス", class: 'form-control'
+        .row.my-4
+          .col-2.required-item
+          .col-10
+            = f.password_field :password, autocomplete: "password", placeholder: "パスワード", class: 'form-control'
+        .row.my-4
+          .col-2.required-item
+          .col-10
+            = f.password_field :password_confirmation, autocomplete: "password", placeholder: "パスワード確認", class: 'form-control'
+        .my-4
+          = f.submit '新しいアカウントを作成', class: 'btn btn-primary form-control'
+        .my-4
+          = render "users/shared/links"

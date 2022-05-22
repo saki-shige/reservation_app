@@ -1,0 +1,38 @@
+.container-fliud.room-new-container
+  .row
+    .room-nav-pc.col-lg-2.d-none.d-lg-block
+      .room-nav
+        ul.nav.flex-column
+          li.nav-item.active
+            =link_to '基本情報', '/users/account'
+          li.nav-item
+            =link_to 'プロフィール', '/users/profile'
+    .room-nav.room-nav-mb.col-lg-2.d-lg-none
+      .room-nav
+        ul.nav
+          li.nav-item.active
+            =link_to '基本情報', '/users/account'
+          li.nav-item
+            =link_to 'プロフィール', '/users/profile'
+    .col-lg-10.room-view
+      .room-form-box
+        .room-new-content
+          h5 アカウント
+          .room-new-content
+            .row
+              .col-md-4.mb-2.room-new-form-label = User.human_attribute_name(:name)
+              .col-md-8.mb-2
+                = @user.name
+          .room-new-content
+            .row
+              .col-md-4.room-new-form-label.mb-2 = User.human_attribute_name(:email)
+              .col-md-8
+                = @user.email
+          .room-new-content
+            .row
+              .col-md-4.room-new-form-label.mb-2 = User.human_attribute_name(:password)
+              .col-md-8.mb-2
+               |*********
+          .room-new-content
+            =link_to '編集する', edit_user_registration_path, class: 'btn btn-primary form-control'
+

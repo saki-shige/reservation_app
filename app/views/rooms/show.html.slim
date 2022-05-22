@@ -1,0 +1,42 @@
+
+= render "shared/error", resource: @reservation if @reservation.present?
+
+.container.room-show
+  .row
+    .col-md-8
+      =image_tag @room.image, class:'room-show-image' if @room.image.attached?
+      .room-show-detail
+        .room-show-detail-icon
+          img.host-icon alt= "host icon" src= "https://presite-potepancamp-rails-02.herokuapp.com/assets/default_icon.jpg"
+        .room-show-detail-profile
+          .room-show-detail-profile-name
+            =@room.name
+          .room-show-detail-profile-address
+            =@room.address
+      .room-show-introduction
+        =@room.introduction
+
+    .col-md-4
+      .room-show-nav
+        .d-flex.justify-content-end
+          h4.price-icon ="#{@room.price} / 泊"
+        .room-show-reservation-form
+          = form_with model: @reservation, url: new_reservation_path, method: :get, local: true do |f|
+            .form-group
+              = f.label :start_at, class: 'form-label'
+              = f.date_field :start_at, class: 'form-control mb-4'
+            .form-group
+              = f.label :end_at, class: 'form-label'
+              = f.date_field :end_at, class: 'form-control mb-4'
+            .form-group
+              = f.label :number_of_guests, class: 'form-label'
+              = f.number_field :number_of_guests, in: 1..30, class: 'form-control mb-4'
+            .form-group
+              -if user_signed_in?
+                =f.hidden_field :user_id, value: current_user.id
+                =f.hidden_field :room_id, value: @room.id
+                = f.submit '予約する', class: 'form-control btn btn-primary'
+              -else
+                = link_to 'ログイン', new_user_session_path, class: 'form-control btn btn-primary my-2'
+                = link_to '新規登録', new_user_registration_path, class: 'form-control btn btn-secondary'
+

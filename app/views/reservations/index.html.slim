@@ -1,0 +1,26 @@
+.container-fiuld.reservations-container
+  h4.pb-4 予約一覧
+  table.table
+    thead.text-center
+      tr
+        th.reservations-image-column
+          .d-none.d-lg-block =Room.human_attribute_name(:image)
+        th =Room.human_attribute_name(:name)
+        th
+          .d-none.d-lg-block =Room.human_attribute_name(:introduction)
+        th =Reservation.human_attribute_name(:total_amount)
+        th =Reservation.human_attribute_name(:start_at)
+        th =Reservation.human_attribute_name(:end_at)
+        th =Reservation.human_attribute_name(:created_at)
+    tbody.align-middle
+      - @reservations.each do |reservation|
+        tr
+          td.reservations-image-column = image_tag reservation.room.image, class: 'reservations-image d-none d-lg-block' if reservation.room.image.attached?
+          td.text-center.reservations-room-name = reservation.room.name
+          td.reservations-introduction
+            .d-none.d-lg-block = reservation.room.introduction
+          td.reservations-price.text-center.price-icon = reservation.total_amount
+          td.reservations-date.text-center = reservation.start_at
+          td.reservations-date.text-center = reservation.end_at
+          td.reservations-date.text-center = reservation.created_at.to_s(:datetime_jp)
+          td= link_to '削除', reservation, method: :delete, data: { confirm: "削除します。よろしいですか？" }, class: 'btn btn-danger'
