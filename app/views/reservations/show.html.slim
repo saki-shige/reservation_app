@@ -1,0 +1,28 @@
+
+.container.reservation-container
+  .row
+    .col-10.offset-1
+        .reservation-form-container
+          .reservation-form-content
+            h4 予約内容確認
+          .reservation-form-content.row
+            .col-md-4
+               =Room.human_attribute_name(:name)
+            .col-md-8
+               =@reservation.room.name
+          .reservation-form-content.row
+            .col-md-4
+               =Reservation.human_attribute_name(:start_at)
+            .col-md-8
+               =@reservation.start_at
+          .reservation-form-content.row
+            .col-md-4
+               =Reservation.human_attribute_name(:end_at)
+            .col-md-8
+               =@reservation.end_at
+          .reservation-form-content.row
+            .col-md-4
+               =Reservation.human_attribute_name(:total_amount)
+            .col-md-8
+              .price-icon =@reservation.total_amount
+          =link_to 'ホーム画面へ', root_path

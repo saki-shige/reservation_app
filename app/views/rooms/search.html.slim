@@ -1,0 +1,17 @@
+
+.container-fluid
+  h5.py-4 = "検索結果：#{@rooms.count}件"
+  .row
+    - @rooms.each do |room|
+      .col-sm-6.col-lg-4.col-xl-3
+        .room-container
+          =link_to room
+            .room-image-out
+              =image_tag room.image, class: 'room-image' if room.image.attached?
+            .room-information
+              .room-profile-name
+                = room.name
+              .room-profile-address
+                = room.address
+              .room-profile-price.price-icon
+                = room.price

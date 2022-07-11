@@ -1,0 +1,52 @@
+
+.container-fliud.room-new-container
+  .row
+    .room-nav-pc.col-lg-2.d-none.d-lg-block
+      .room-nav
+        ul.nav.flex-column
+          li.nav-item.active
+            =link_to '基本情報', new_room_path
+    .room-nav.room-nav-mb.col-lg-2.d-lg-none
+      .room-nav
+        ul.nav
+          li.nav-item.active
+            =link_to '基本情報', new_room_path
+    .col-lg-10.room-view
+      .room-form-box
+        .room-new-content
+          h5 ルーム登録
+        = render '/shared/error', resource: @room
+        = form_with model: @room, local: true do |f|
+          .room-new-content
+            .row
+              = f.label :name, class: 'col-md-3 required-item room-new-form-label mb-2'
+              .col-md-9.mb-2
+                = f.text_field :name, placeholder: 'ルーム名を入力', class: 'form-control'
+          .room-new-content
+            .row
+              = f.label :introduction, class: 'col-md-3 required-item room-new-form-label mb-2'
+              .col-md-9.mb-2
+                = f.text_area :introduction, rows: 4, placeholder: '紹介文を入力', class: 'form-control '
+          .room-new-content
+            .row
+              = f.label :price, class: 'col-md-3 required-item room-new-form-label mb-2'
+              .col-md-7.mb-2
+                = f.number_field :price, in: 1..10000000  , placeholder: '一泊あたりの金額を入力', class: 'form-control'
+              .col-md-2.align-self-center 円/泊
+          .room-new-content
+            .row
+              = f.label :address, class: 'col-md-3 required-item room-new-form-label mb-2'
+              .col-md-9
+                = f.text_field :address, placeholder: '住所を入力', class: 'form-control'
+          .room-new-content
+            .row
+              = f.label :image, class: 'col-md-3 required-item room-new-form-label mb-2'
+              .col-md-9
+                = f.file_field :image, class: 'form-control'
+
+
+          =f.hidden_field :user_id, value: current_user.id
+          .room-new-content
+            = f.submit nil, class: 'btn btn-primary form-control'
+
+

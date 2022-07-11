@@ -1,0 +1,51 @@
+.container-fliud.room-new-container
+  .row
+    .room-nav-pc.col-lg-2.d-none.d-lg-block
+      .room-nav
+        ul.nav.flex-column
+          li.nav-item
+            =link_to '基本情報', '/users/account'
+          li.nav-item.active
+            =link_to 'プロフィール', '/ users/profile'
+    .room-nav.room-nav-mb.col-lg-2.d-lg-none
+      .room-nav
+        ul.nav
+          li.nav-item
+            =link_to '基本情報', '/users/account'
+          li.nav-item.active
+            =link_to 'プロフィール', '/ users/profile'
+    .col-lg-10.room-view
+      .room-form-box
+        = render "/shared/error", resource: current_user
+        .room-new-content
+          h5 プロフィール
+          .room-new-content
+            .row
+              .col-md-6.offset-md-3
+                .icon-box
+                  -if @user.image.attached?
+                    =image_tag @user.image, class: 'icon-image host-icon'
+                  -else
+                    img.host-icon alt= "host icon" src= "https://presite-potepancamp-rails-02.herokuapp.com/assets/default_icon.jpg"
+
+          = form_with model: @user, url: '/users/profile', method: :patch, local: true do |f|
+            .room-new-content
+              .row
+                = f.label :image, class: 'col-md-3 room-new-form-label mb-2'
+                .col-md-9
+                  = f.file_field :image, class: 'form-control mb-2'
+            .room-new-content
+              .row
+                = f.label :name, class: 'col-md-3 room-new-form-label mb-2'
+                .col-md-9
+                  = f.text_field :name, class: 'form-control mb-2'
+            .room-new-content
+              .row
+                = f.label :introduction, class: 'col-md-3 room-new-form-label mb-2'
+                .col-md-9
+                  = f.text_area :introduction, rows: 4, class: 'form-control mb-2'
+
+            .room-new-content
+              = f.submit nil, class: 'btn btn-primary form-control mb-2'
+
+

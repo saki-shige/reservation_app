@@ -1,0 +1,19 @@
+= render "/shared/error", resource: resource
+
+.container.device-container
+  .device-form-container
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .my-4 ログイン
+      .device-form-contents.container
+        .row.my-4
+          .col-2.required-item
+          .col-10
+            = f.email_field :email, autofocus: true, placeholder: "メールアドレス", class: 'form-control'
+        .row.my-4
+          .col-2.required-item
+          .col-10
+            = f.password_field :password, placeholder: "パスワード", class: 'form-control'
+        .my-4
+          = f.submit "ログイン", class: 'btn btn-primary form-control'
+
+      = render "users/shared/links"

@@ -1,0 +1,30 @@
+.top-main
+  .container
+    .row.col-lg-6
+      .form-fream
+        .form-area
+          p.form-area-title.mb-4 Potepan Shareでまだ体験したことのない旅をしよう
+          =form_with url: rooms_search_path, local: true, method: :get do |f|
+            =f.text_field :area , placeholder: "東京", class: "form-control mb-4"
+            =f.submit "検索", class: "form-control btn-primary mb-4"
+
+.container
+  .panel-area.m-5
+    h3.my-4.font-weight-bold おすすめのエリア
+    .row
+      .panel-item.col-lg-3.col-6
+          .panel-item-title 東京
+          =link_to rooms_search_path(area: '東京')
+             img.panel-image src="https://presite-potepancamp-rails-02.herokuapp.com/assets/img_tokyo.jpg"
+      .panel-item.col-lg-3.col-6
+          .panel-item-title 大阪
+          =link_to rooms_search_path(area: '大阪')
+             img.panel-image src="https://presite-potepancamp-rails-02.herokuapp.com/assets/img_osaka.jpg"
+      .panel-item.col-lg-3.col-6
+          .panel-item-title 京都
+          =link_to rooms_search_path(area: '京都')
+             img.panel-image src="https://presite-potepancamp-rails-02.herokuapp.com/assets/img_kyoto.jpg"
+      .panel-item.col-lg-3.col-6
+          .panel-item-title 札幌
+          =link_to rooms_search_path(area: '札幌')
+             img.panel-image src="https://presite-potepancamp-rails-02.herokuapp.com/assets/img_sapporo.jpg"

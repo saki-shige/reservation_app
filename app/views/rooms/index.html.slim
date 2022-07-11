@@ -1,0 +1,25 @@
+
+
+.container-fiuld.reservations-container
+  h4.pb-4 登録済みルーム一覧
+  table.table
+    thead.text-center
+      tr
+        th.reservations-image-column
+          .d-none.d-lg-block =Room.human_attribute_name(:image)
+        th =Room.human_attribute_name(:name)
+        th
+          .d-none.d-lg-block =Room.human_attribute_name(:introduction)
+        th =Room.human_attribute_name(:price)
+        th =Room.human_attribute_name(:created_at)
+    tbody.align-middle
+      - @rooms.each do |room|
+        tr
+          td.reservations-image-column = image_tag room.image, class: 'reservations-image d-none d-lg-block' if room.image.attached?
+          td.text-center.reservations-room-name =link_to room.name, room
+          td.reservations-introduction
+            .d-none.d-lg-block = room.introduction
+          td.reservations-price.text-center.price-icon = room.price
+          td.reservations-date.text-center = room.created_at.to_s(:datetime_jp)
+          td= link_to '削除', room, method: :delete, data: { confirm: "削除します。よろしいですか？" }, class: 'btn btn-danger'
+
